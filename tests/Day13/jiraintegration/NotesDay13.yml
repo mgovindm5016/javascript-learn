@@ -1,0 +1,127 @@
+📑 **Agenda for Week 7 Day 1: Jira Integration & OOPs in TypeScript
+🎯 [Focus: Mastering Object-Oriented Programming Concepts in TypeScript]
+
+📆 [27th Dec. Saturday]
+
+🕝 Session Highlights
+
+⿡ Recap
+Quick review of previous learnings.
+
+1. Jira Integration
+Linking test results with Jira issues.
+Automating status updates and reporting.
+
+2. Class & Objects
+
+Understanding the basics of classes and objects in TypeScript.
+Examples: Creating and using classes and objects.
+
+3. Constructors
+
+Role of constructors in initializing objects.
+Examples: Using parameterized and default constructors.
+
+4. Access Modifiers
+
+Understanding public, private, and protected access modifiers.
+Examples: Controlling access to class properties and methods.
+
+5. Inheritance
+
+Exploring the concept of inheritance for code reuse.
+Examples: Implementing single and multilevel inheritance.
+
+🕡 Wrap Up / Q&A
+
+📝 Keep your physical notebook and pen handy to sketch out ideas and test workflows!
+
+
+Agenda :
+
+1. Class and Object.
+2. Method and properties.
+3. Constructor.
+4. Accessmodifiers.
+5. Encapsulation.
+6. Inheritance.
+
+***************************************************************************************
+Class and Object:
+
+class:
+A design / template (blueprint) used to create objects.
+
+property :
+Represents the information or data related to a particular page or object
+(e.g., username, password, URL).
+
+method : 
+Represents the actions or operations performed on that page or object
+(e.g., fill a field, click a button, submit a form).
+
+******************************************************************************************
+
+class LoginPage {
+//properties:Informartion of thst particular page example username, password
+username : string 
+password :string
+
+//methods:action performed on that page.
+fillmethod(username,password){ // fill action
+properties 
+}
+
+clickMethod(){ // Click action
+
+}
+}
+
+let lp = new LoginPage() // Object creation //variableNameFeature1 is the object
+lp.fillmethod()
+lp.clickMethod()
+
+****************************************************************************************
+Constructor:
+
+Definition
+A constructor in TypeScript is a method named constructor() that runs once at the time of object creation and sets up the initial state of the object.
+Or a Special method to initialize the object
+
+*******************************************************************************************
+
+faker library installation :
+
+npm install @faker-js/faker
+
+
+
+class LoginPage{
+
+fill(){ // Method block--> block of code to perform an action
+//Actionables
+fill method
+}
+
+click(){
+//Actionables
+click method
+}
+}
+
+
+const lp = new LoginPage() // syntax to create an object(reference/ instance/copy) for a class to call the methods(actionable blocks) inside the class 
+lp.fill()
+lp.clik()
+
+
+
+
+function LoginPage(){ // function block
+//Actionables
+fill method
+click method
+
+}
+
+LoginPage()

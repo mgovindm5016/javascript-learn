@@ -1,0 +1,37 @@
+//function scope --var is function scoped
+
+function testFunctionScope(){
+    var companyName="TestLeaf"
+    console.log("Accessing var companyname inside function:",companyName);  
+    if(true){
+        console.log("Accessing var companyname inside block within function:",companyName);  
+    }  
+}
+
+testFunctionScope();
+//console.log("Accessing var company Name outside the function:",companyName); throws error
+
+
+//Function scope using let
+
+function testFunctionScopeLet(){    
+    let companyName1="BridgeLabz"
+    console.log("Accessing let companyname inside function:",companyName1);  
+    if(true){
+        console.log("Accessing let companyname inside block within function:",companyName1);  
+    }
+}
+testFunctionScopeLet();
+//console.log("Accessing let company Name outside the function:",companyName1); //throws error
+
+//Function scope using const
+
+function testFunctionScopeConst(){  
+    const companyName2="OpenSource"
+    console.log("Accessing const companyname inside function:",companyName2);  
+    if(true){
+        console.log("Accessing const companyname inside block within function:",companyName2);  
+    }
+}
+testFunctionScopeConst();
+console.log("Accessing const company Name outside the function:",companyName2); //throws error

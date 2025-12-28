@@ -1,0 +1,35 @@
+function findCompanyName(companyName){
+    if (companyName === "OpenAI") {
+        console.log("My Company name is OpenAI");
+    } else if (companyName === "Google") {
+        console.log("My Company name is Google");
+    }else{
+        console.log("Company name not found");
+    }
+}
+
+findCompanyName("ArcticWolf"); // Output: Company name not found
+
+
+// Alternative using switch statement
+function findCompanyNameSwitch(companyName){
+    switch(companyName) {
+        case "OpenAI":
+            console.log("My Company name is OpenAI");
+            break;
+        case "Google":
+            console.log("My Company name is Google");
+            break; 
+        case "Microsoft":
+            console.log("My Company name is Microsoft");
+            break;
+        case "ArcticWolf":
+            console.log("My Company name is ArcticWolf");
+            break;         
+        default:
+            console.log("Company name not found");
+    }
+}
+
+let companyName = "ArcticWolf";
+findCompanyNameSwitch(companyName); // Output: My Company name is ArcticWolf

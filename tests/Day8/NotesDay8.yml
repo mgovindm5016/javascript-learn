@@ -1,0 +1,162 @@
+📑 Agenda for Week 4 Day 2: Playwright locators, Handling Frames & Alerts
+
+🎯 [Focus: Understanding to interact with frames, alerts and windows]  
+
+📆 Date: 07 December [Sunday]  
+
+🕝 Session Highlights
+
+Recap
+* Quick review of key learnings from previous sessions.  
+
+1. Playwright's getBy Locators
+* Explore getByText, getByRole, getByLabel, and more.  
+* Accessibility-first Automation with getBy Methods.  
+* Real-time Activity: Automating a Login Form.
+
+2 Interaction with Frames
+* Understanding the concept of iframes in web applications.  
+* Navigating into and interacting with elements inside frames.
+
+3 Alerts Handling
+* Understanding Playwright’s support for JavaScript alerts, prompts, and confirmations.  
+* Automating acceptance or dismissal of alerts.  
+
+4 Handling Multiple Windows / Tabs  
+* Managing multiple windows or tabs in Playwright.  
+* Switching between windows and tabs efficiently.  
+
+
+🕡 Wrap Up / Q&A  
+
+📝 Keep your physical notebook and pen handy to sketch out ideas!
+
+Playwright Locators :
+--------------------
+
+1. getByRole()
+2. getByText()
+3. getByLabel()
+4. getByPlaceholder()
+5. getByTitle()
+6. getByAltText()
+7. getByTestId()
+
+--------------------------------------------------------------------------------
+
+| Feature           | Alt-Text                   | Test ID             |
+| ----------------- | -------------------------- | ------------------- |
+| Used for          | Images                     | Any element         |
+| Purpose           | Accessibility + automation | Only for automation |
+| Written by        | UI developer               | QA + developer      |
+| Changes often?    | Rarely                     | Never (ideally)     |
+| Playwright method | `getByAltText()`           | `getByTestId()`     |
+
+--------------------------------------------------------------------------------
+
+
+Frames :
+-------
+
+Definition: An HTML document embedded inside another document using an <iframe> tag. Playwright allows direct interaction with elements inside frames.
+
+Usage: Useful for automating pages that load content inside frames or nested frames.
+
+Syntax:
+
+page.frames()-> frames() method helps to get the collection of frames that is present in a webpage.
+
+page.frameLocator(selector) → Locates elements inside a frame (recommended).
+
+page.frame({ name | url | index }) → Gets the frame object to interact with.
+
+
+Alerts /Dialogs:
+---------------
+
+Definition: Browser pop-ups such as alert, confirm, prompt, or beforeunload triggered by JavaScript.
+
+Usage: Intercept and handle dialog events to read their message and accept or dismiss them.
+
+Syntax:
+
+page.on('dialog', async dialog => { ... }) → Listen and handle.
+
+await dialog.accept([promptText]) → Accept dialog (optionally providing input for prompts).
+
+await dialog.dismiss() → Cancel dialog.
+
+Event Listeners
+--------------
+Definition: You subscribe to an event via Playwright's event emitter system.
+
+Usage: Allows multiple listeners for the same event. No overwriting — all registered callbacks run.
+
+Syntax: page.on(eventName, callback) or page.once(eventName, callback)
+
+
+------------------------------------------------------------------------------------
+
+✅ What does page.on() mean?
+
+Think of page.on() like:
+
+“Hey Playwright, listen to this page. If something happens, tell me!”
+
+So this part:
+
+page.on(...)
+
+
+means:
+
+👉 Attach a listener to the page for some event.
+
+✅ What is 'dialog'?
+'dialog'
+
+
+This means:
+
+🔔 “I want to be notified whenever an alert box / confirm / prompt appears on this page.”
+
+In browsers, these are called JavaScript dialogs:
+
+alert()
+
+confirm()
+
+prompt()
+
+So:
+
+page.on('dialog', ...)
+
+
+means:
+
+✅ Whenever any alert, confirm, or prompt appears → run this code.
+
+✅ What is async (alert) => { ... }
+
+This is an arrow function (callback function).
+
+It means:
+
+ “When a dialog appears, Playwright will give me that dialog object in the variable called alert.”
+
+So:
+
+async (alert) => {
+
+
+means:
+
+- This function runs automatically
+- alert contains the popup box
+- async is used because:
+
+We use await alert.dismiss() inside it
+
+----------------------------------------------------------------------------------------
+

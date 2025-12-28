@@ -1,0 +1,102 @@
+---
+
+## 1️⃣ What is the problem witj sequential approach of window handling?
+
+👉 Clicking **MOTOROLA g35** opens a **new browser tab / window**.
+
+Playwright must:
+
+* **Click the element**
+* **Listen for the new page event at the same time**
+
+If you do them **one after the other**, you may **miss the event**.
+
+---
+
+## 2️⃣ Why `Promise.all()` or concurrent approach is required?
+
+### Sequential window handling 
+const newPage = context.waitForEvent(`page`);
+await page.locator('//div[contains(text(),"MOTOROLA g35")]').click();
+const childPage = await newPage; // ❌ may fail
+```
+
+❌ If the new tab opens **before** `waitForEvent` starts listening → **timeout**
+
+---
+
+### ✅ Correct/ Concurrent approach using `Promise.all`
+
+`Promise.all()`:
+
+* Starts **both actions at the same time**
+* Waits until **both are completed**
+
+---
+
+## 3️⃣ What exactly happens inside `Promise.all()`?
+
+Promise.all([
+  context.waitForEvent('page'),  //  Listener starts first
+  page.locator(...).click()      //  Click happens
+]);
+
+
+### Timeline (Very Important)
+
+```
+1️⃣ Start listening for new page
+2️⃣ Click the product
+3️⃣ Browser opens a new tab
+4️⃣ Playwright captures the new tab
+5️⃣ Promise resolves with the new Page object
+
+
+---
+
+## 4️⃣ Why destructuring `[childPage]`?
+
+`Promise.all()` returns an **array of results**:
+
+[
+  Page,   // result of waitForEvent('page')
+  void    // result of click()
+]
+
+So we extract only the page:
+
+
+const [childPage] = ...
+
+
+Equivalent to:
+
+const results = await Promise.all([...]);
+const childPage = results[0];
+
+---
+
+## Why use `context.waitForEvent('page')` instead of `page.waitForEvent()`?
+
+| Method                         | When to use          |
+| ------------------------------ | -------------------- |
+| `context.waitForEvent('page')` | New tab/window opens |
+| `page.waitForEvent()`          | Event on same page   |
+
+👉 New tabs belong to the **browser context**, not the parent page.
+
+---
+
+## Interview-ready explanation (Perfect answer)
+
+> `Promise.all()` is used to run the click action and page-event listener concurrently.
+> This prevents missing the new tab event and ensures Playwright captures the child window reliably.
+
+---
+
+##One-line summary 
+
+> **`Promise.all()` ensures Playwright listens for a new page while triggering the action that opens it — avoiding race conditions.**
+
+---
+

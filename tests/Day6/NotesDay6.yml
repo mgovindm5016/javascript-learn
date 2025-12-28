@@ -1,0 +1,141 @@
+📑 Agenda for Week 3 Day 2: Playwright Assertions and TypeScript Fundamentals 
+
+📆 Date: 30 November [Sunday]
+
+🕝 Session Highlights
+
+Recap
+   - Key Takeaways from previous session.
+
+1. Assertions Using the 'expect' Library  
+* Commonly used assertions and their applications. 
+-->Classroom Activity in Asserions.
+
+2. Understanding Arrays in JavaScript  
+* Basics of Arrays: What and Why?  
+* Common Methods and Operations on Arrays.  
+
+-->Classroom Activity in Arrays
+
+2. Introduction to TypeScript
+* What is TypeScript, and Why Use It?  
+* Setting Up a TypeScript Environment.  
+* Basic Syntax and First TypeScript Program.  
+
+3. TypeScript Types  
+* Overview of Types in TypeScript:  
+* Hands-on: Declaring Variables with Different Types.  
+
+4. Explicit Types & Annotations 
+* Why Use Type Annotations?  
+* Explicitly Defining Function Parameters and Return Types.  
+* Examples:  
+     * Type Inference vs. Explicit Types. 
+
+--> Breakout session Handson on TypeScript basics. 
+
+5. Type Aliases  
+* What are Type Aliases and why use them?  
+* Syntax and examples.  
+
+
+Notes:
+-----
+
+{
+      name: 'chromium',
+      use: { browserName:"chromium", 
+        viewport:null, // disable the deafult 1280x720
+        launchOptions:{
+          args:['--start-maximized'],
+        },
+      },
+    }, 
+
+    Firefox :
+    ----------
+
+        name: 'firefox',
+      use: { browserName:"firefox", 
+        viewport:{ width: 1920, height: 1080 }, // disable the deafult 1280x720
+        launchOptions:{
+          args:['--start-maximized'],
+        }
+}
+}
+
+
+
+
+
+Assertions :
+-----------
+Use expect() library for assertions
+
+expect library meaning - to expect something
+
+5 types of Assertions in Playwright:
+--------------------------------------
+
+1. Generic Assertion.
+
+Assertions on variables or values, not directly tied to UI elements.
+
+toBe – Checks strict equality (===) between two values.
+toEqual – Checks deep equality of objects/arrays/values.
+toContain – Checks whether a value/substring exists inside an array/string.
+toBeTruthy – Passes if the value is considered true in JavaScript.
+toBeFalsy – Passes if the value is considered false in JavaScript.
+toBeGreaterThan – Checks if a number is greater than another number.
+
+
+2. Locator Assertion.
+Assertions performed on UI elements indentified using locators
+
+- toBeVisible()- checks if the element is visible on the page.
+- toBeEnabled()- checks if the element is enabled and can be interacted with.
+- toBeEditable()- checks if the element is editable, such as input fields.
+
+3. Page Assertion.
+
+Assertions made on the page object , such as URL and title.
+
+toHaveURL(url) - checks if the current page URL matches the expected URL.
+toHaveTitle() - checks if the page title matches the expected title.
+
+4. Snapshot Assertions. --> Visual Regression testing
+Assertions comparing two visual elments from the UI particular
+
+5. API refernce Assertions. --> REST API 
+Assertions used check your API reponses 
+
+
+Based on Functionality 
+--------------------
+
+1. Auto retry assertion.
+2. Non-retry assetion.
+
+
+Hard Assertion.--> It will abruptly stop your execution.
+Soft Assertion. --> Informing that he assertion has failed and it will not stop execution it will move to next  part of execution.
+
+
+
+
+Negating matchers
+
+In general, we can expect the opposite to be true by adding a .not to the front of the matchers:
+
+expect(value).not.toEqual(0);
+await expect(locator).not.toContainText('some text');
+
+
+Classroom activity :
+---------------------
+
+
+
+
+
+https://forms.office.com/r/ePjsMRscsM

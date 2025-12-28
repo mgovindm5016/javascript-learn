@@ -1,0 +1,52 @@
+📑 Agenda for Week2 Day1 - Get Started with Playwright
+🎯 [ Focus: Kickstart Playwright automation with hands-on basics ]
+ 
+📆 Date: 22 November [Saturday]
+ 
+🕝 Session Highlights
+
+ Recap 
+- Key takeaways from the previous session:  
+Introduction to JavaScript, Mastering Variables, Operators, Conditional Statements&Loops,
+String and Function types.
+
+1. String
+* Exploring Methods and Real-world Use Cases
+* [Practice] Solve String-based Problems
+
+2. Functions
+* Different types of functions -> Named function, Function Expression/ Anonyuomus Function, Arrow Function, Call back function
+* [Practice] Solve String-based Problems
+
+3. Understanding Playwright Architecture
+* Core Components and How They Interact  
+
+4. Browser, Context, and Page
+* Breaking Down the Key Concepts  
+* Real-life Use Cases in Automation  
+
+5. Code Your First Test Script
+* Hands-on Activity: Writing and Executing a Basic Script  
+
+
+🕡 Wrap Up / Q&A 
+
+📝 Keep your physical notebook and pen handy to sketch out ideas!
+
+
+Notes :
+------
+
+let course = "Playwright"
+
+   Length | Index | Negative Index   
+P - 1        0        -10
+l - 2        1        -9
+a - 3        2        -8
+y - 4        3        -7
+w - 5        4        -6
+r - 6        5        -5
+i - 7        6        -4
+g - 8        7        -3
+h - 9        8        -2
+t -10        9        -1

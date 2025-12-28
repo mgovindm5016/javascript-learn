@@ -1,0 +1,31 @@
+{
+  "name": "javascript-learn",
+  "version": "1.0.0",
+  "description": "A small collection of JavaScript practice files used for learning basic concepts across Day 1–3 exercises. These are simple, runnable `.js` example files intended for learning and experimentation.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgovindm5016/javascript-learn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mgovindm5016/javascript-learn/issues"
+  },
+  "homepage": "https://github.com/mgovindm5016/javascript-learn#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "axios": "^1.13.2",
+    "csv-parse": "^6.1.0",
+    "dotenv": "^17.2.3"
+  }
+}

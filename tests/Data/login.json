@@ -1,0 +1,14 @@
+[
+
+{
+    "TcaseId": "TC_Login_001",
+    "Username": "demosalesmanager",
+    "Password": "crmsfa"
+},
+{
+    "TcaseId": "TC_Login_002",
+    "Username": "demoCSR2",
+    "Password": "crmsfa"
+}
+
+]

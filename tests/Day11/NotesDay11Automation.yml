@@ -1,0 +1,44 @@
+creating page reference in playwright :
+
+const browser = chromium.launch() --> Connect btowser engine
+const context = browser.newContext() --> Window launched
+const page = context.newPage() --> a tab is loaded in that particular Window
+
+In playwright API testing happens by directly hitting your CDP network tabs :
+
+creating request reference in playwright using "APIRequestContext" :
+  // 1. Create a new API context (like creating a browser context)
+  const apiContext = await request.newContext(); //Creates a new API request context (like an isolated API session)
+
+  // 2. Send API request (GET, POST, PUT, DELETE, etc.)
+  const response = await apiContext.post('https://reqres.in/api/users/2'); //Sends a GET request
+
+  // 3. Validate response
+  console.log(await response.status());       // 200
+
+APIRequestContext--> Interface provided by Playwright to make your API calls.
+
+****************************
+Frequently Asked Questions :
+----------------------------
+
+### What response.json() really does
+
+When you call an API (like ServiceNow’s), it sends back data in JSON text format, for example:
+
+✅ response.json() → JSON string ➜ object
+
+
+###Why encoding is needed (and not plain username/password)
+
+- HTTP headers only accept ASCII text, not special characters like %, *, etc.
+
+- Base64 encoding ensures your credentials are transmitted safely as plain text (not encrypted, but properly formatted).
+
+- ServiceNow (and most APIs) expects credentials in this Base64 form for Basic Auth requests — if you send raw username and password, it won’t recognize them.
+
+----------------------------------------
+
+### Using nested JSON to retrieve below line:
+
+   console.log(responseBody.result.sys_id);

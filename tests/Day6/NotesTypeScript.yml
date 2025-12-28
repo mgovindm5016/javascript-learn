@@ -1,0 +1,112 @@
+
+
+Arrays in JavaScript :
+----------------------
+
+
+Arrays :
+--------
+1. Dynamic size
+2. Heterogenous elements.
+
+--------------------------
+
+Sort Method internal mechanism:
+-------------------------------
+
+let numberArray = [10, 8, 9, 7];
+numberArray.sort((a, b) => a - b);
+
+
+### 🟢 Step 1: Initial Array
+
+[10, 8, 9, 7]
+---
+
+### 🟢 Step 2: First Comparisons
+
+1. Compare **10 and 8**
+
+   * a = 10, b = 8 → `10 - 8 = 2` (positive)
+   * Swap → `[8, 10, 9, 7]`
+
+2. Compare **10 and 9**
+
+   * a = 10, b = 9 → `10 - 9 = 1` (positive)
+   * Swap → `[8, 9, 10, 7]`
+
+3. Compare **10 and 7**
+
+   * a = 10, b = 7 → `10 - 7 = 3` (positive)
+   * Swap → `[8, 9, 7, 10]`
+
+---
+
+### 🟢 Step 3: Next Pass
+
+1. Compare **8 and 9**
+
+   *  a = 8,b = 9 → `8 - 9 = -1` (negative)
+   * Keep order → `[8, 9, 7, 10]`
+
+2. Compare **9 and 7**
+
+   * a = 9, b = 7 → `9 - 7 = 2` (positive)
+   * Swap → `[8, 7, 9, 10]`
+
+---
+
+### 🟢 Step 4: Another Pass
+
+1. Compare **8 and 7**
+
+   * a = 8, b = 7 → `8 - 7 = 1` (positive)
+   * Swap → `[7, 8, 9, 10]`
+
+Now everything is in order 
+
+---
+
+### Final Sorted Array
+
+[7, 8, 9, 10]
+
+---
+
+Quick Recap:
+
+* `a` and `b` are just **two numbers being compared**.
+* The compare function `(a - b)` tells JavaScript whether to swap them.
+
+
+TypeScript introduction :
+-------------------------
+
+TypeScript Installation commands:
+---------------------------------
+
+1. npm install -g ts-node
+2. Check : tsc --version
+3. Compile the file first using the command : tsc filename.ts
+4. This will generate a filename.js file
+5. Now run the js file using the command : node filename.js
+
+------------------------------------------------
+
+Note if you want directly run the .ts file follow below steps :
+--------------------------------------------------------------
+
+1. npm install -g ts-node
+
+2. npx tsc --init --> This will create a default tsconfig.json
+
+3. Make below changes in the tsconfig.json
+{
+  "compilerOptions": {
+    "module": "CommonJS"
+  }
+}
+4. Now execute the file directly using the below command
+
+ ts-node filename.ts
+

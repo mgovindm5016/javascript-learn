@@ -1,0 +1,39 @@
+
+1. test timeout:
+-----------------
+Timeout for a specific test execution.
+
+test.setTimeout(20000)
+
+2. assertion timeout:
+----------------------
+Timeout for assertion of a weblelement.
+
+In config file below timeout :
+expect:{
+timeout:15000
+}
+
+In script : 
+await expect(locator).toHaveText('Submit',{timeout:15000})
+
+3. Action timeout :
+--------------------
+Timeout for each and every action performed like click(), fill()
+
+In config mention under "use" :
+use:{
+actionTimeout:15000
+}
+
+In script : 
+await page.locator("#password").fill("crmsfa",{timeout:20000})
+
+4. GLobal timeout :
+-----------------------
+Implemented when we execute in pipleines.
+
+In config file under "timeout" :
+
+globalTimout : 60*60*1000
+

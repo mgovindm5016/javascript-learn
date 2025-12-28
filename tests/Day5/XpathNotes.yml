@@ -1,0 +1,59 @@
+Different types of Xpath Locators
+
+    1. Basic XPath
+            //tagName[attribute='value']
+    2. text Based xpath
+            //tagName[text()='value']
+    3. Partial text bases xpath
+            //tagName[contains(text(),'value')]
+    4. Index based xpath
+            (//tagName[@attribute='value'])[index]
+            (//input[@class='inputLogin'])[1]
+
+
+Advance Xpath:
+
+       1. Parent to child
+                (Parent relativeXpath)/(childTagName)
+               //form[@id='login']/p , //div[contains(@class,'SmNnR')]/input
+        2. GrandParent to grandChild
+                (GrandParent relativeXpath)//(grandChildTagName)
+                 (//form[@id='login']//input)[1]
+                 //div[contains(@class,'dbb')]//input[@name="firstname"] --fb sign up
+        3. Child to parent
+                (child relativeXpath)/..
+                or 
+                child relativeXpath)/parent::Parent tagName
+
+                //input[@id='username']/parent::p    ---leaftaps
+                //input[@id='username']/..
+
+        4. GrandChild to GrandParent
+                (grandChild relativeXpath)/ancestor::GrandParentTagName
+                //input[@id='username']/ancestor::form       --leaftaps      
+
+        5.Elder Sibling to Younger Sibling
+                (Elder Sibling relativeXpath)/following-sibling::YoungerSiblingTagName
+                //label[text()='Username']/following-sibling::input  --leaftaps
+                //label[text()='Search Amazon.in']/following-sibling::input --amazon
+
+        6. Younger Sibling to Elder Sibling
+                (Younger Sibling relativeXpath)/preceding-sibling::ElderSiblingTagName
+                //input[@id='username']/preceding-sibling::label   --leaftaps
+                //input[@id='twotabsearchtextbox']/preceding-sibling::label --amazon
+
+        7. Elder Cousin to Younger Cousin
+                (Elder Cousin relativeXpath)/following::YoungerCousinTagName[index]
+                //input[@id='password']/following::input[1] - leaftaps --Login button
+
+        8. Younger Cousin to Elder Cousin
+                (Younger Cousin relativeXpath)/preceding::ElderCousinTagName[index]
+                //input[@id='password']/preceding::input[1] - leaftaps --username field
+
+
+
+
+
+
+
+

@@ -1,0 +1,218 @@
+📑 Agenda for Week 3 Day 1: Playwright Features
+🎯 [ Focus: Mastering the features of Playwright on Locators, Dropdown & Assertions]  
+
+📆 Date: 29 November [Saturday]
+
+
+1. XPath Selectors
+* Relative vs. Absolute XPath: What's Better? 
+* Advanced relative Xpath- Axes  
+* Practical Use Cases with XPath Examples.
+
+2. Handling Dropdowns  
+* Understanding dropdown types: 'select' tags and custom dropdowns.  
+* Selecting options by value, label, or index.
+* Facebook live example. 
+
+3. Assertions Using the 'expect' Library  
+* Commonly used assertions and their applications. 
+* Salesforce live example.
+
+4. Playwright's getBy Locators
+* Explore getByText, getByRole, getByLabel, and more.  
+* Accessibility-first Automation with getBy Methods.  
+* Real-time Activity: Automating a Login Form. 
+
+
+NotesDay5 :
+-----------
+
+Playwright locator methods :
+----------------------------
+
+nth(), first(), and last() are Playwright Locator API methods.
+
+They help you choose which element to act on when a locator matches multiple elements.
+
+timeouts in playwright :
+----------------------
+
+1. test timeout:
+-----------------
+Timeout for a specific test execution.
+
+test.setTimeout(20000)
+
+2. assertion timeout:
+----------------------
+Timeout for assertion of a weblelement.
+
+In config file below timeout :
+expect:{
+timeout:15000
+}
+
+In script : 
+await expect(locator).toHaveText('Submit',{timeout:15000})
+
+3. Action timeout :
+--------------------
+Timeout for each and every action performed like click(), fill()
+
+In config mention under "use" :
+use:{
+actionTimeout:15000
+}
+
+In script : 
+await page.locator("#password").fill("crmsfa",{timeout:20000})
+
+4. GLobal timeout :
+-----------------------
+Implemented when we execute in pipleines.
+
+In config file under "timeout" :
+
+globalTimout : 60*60*1000
+
+
+Advanced Locators in Playwright :
+--------------------------
+Parent To child   : 
+------------------
+( parent realtive xpath)/(tagName of child) --> //form[@id="login"]/p
+
+GrandParent to child Relation   :
+--------------------------------
+GrandParent relative xpath//tagName of grand child --> //form[@id="login"]//input
+
+Child to parent :      
+----------------
+Child relative xpath/parent::parent tagName --> //input[@id="username"]/parent::p
+
+Grandchild to grandparent :
+-----------------------------
+GrandChild relative xpath/ancestor::tagName of grand parent --> //input[@id="password"]/ancestor::p
+
+Younger sibling to Elder Sibling :
+-----------------------------------
+(Younger sibling relative xpath)/preceding-sibling::tagName of elder sibling --> //input[@id='username']/preceding-sibling::label
+
+Elder sibling to younger sibling :
+----------------------------------
+(Elder sibling relative xpath)/following-sibling::tagName of younger sibling --> //label[text()='Username']/following-sibling::input
+
+Elder Cousin to Younger Cousin :
+--------------------------------
+Elder cousing relative xpath/following::tagName of younger Cousin --> //input[@id="username"]/following::label
+
+
+Younger Cousin to Elder Cousin:
+-------------------------------
+Younger cousin xpath/preceding::tagName of Elder cousin --> //label[text()='Password']/preceding::input
+
+
+
+Commonly used Commands :
+------------------------
+
+To create a playwright file - filename.spec.ts
+
+To run the test file - npx playwright test filename.spec.ts
+
+To open the test report - npx playwright show-report
+
+
+Default mode - headless
+
+
+Select options used based on priority:
+-----------------------------------------
+
+
+1. Select By Value :
+-Stable and less likely to change since the value is often connected to your backend
+
+  await page.selectOption(`#createLeadForm_dataSourceId`,{value:"LEAD_DIRECTMAIL"})
+
+2. Select By Label :
+Tend to change due to business requirements / geography
+Example travel name of places in your website
+
+
+3. Select BY Index :
+When ever there is not change in the order of your dropdown can go for select by index 
+
+Non-select tags
+---------------
+1. Locate your dropdown and use click()/ enter the value
+2. locate the particular option from the dropdownlist - clickit
+
+
+
+Ways of handling dropdown:
+----------------------------
+
+| Method     | Stability | Readability | Use When...                         |
+| ---------- | --------- | ----------- | ----------------------------------- |
+| By value |   High    |   Low       | Most reliable, backend-driven IDs   |
+| By label |   Medium  |   High      | UI is stable or for quick checks    |
+| By index |   Low     |   Low       | Only if no other way /staticorder |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Maximize Screen size in chromium : 
+--------------------------------
+
+  {
+      name: 'chromium',
+      use: { browserName:"chromium", 
+        viewport:null, // disable the deafult 1280x720
+        launchOptions:{
+          args:['--start-maximized'],
+        },
+      },
+    }, 
+
+
+
+Maximize Screen size in firefox : 
+--------------------------------
+
+     {
+      name: 'firefox',
+      use: { browserName:"firefox", 
+        viewport:{ width: 1920, height: 1080 }, // disable the deafult 1280x720
+        launchOptions:{
+          args:['--start-maximized'],
+        }
+}
+}
